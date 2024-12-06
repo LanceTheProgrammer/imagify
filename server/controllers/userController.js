@@ -34,6 +34,7 @@ const registerUser = async (req, res) => {
 };
 const loginUser = async (req,res)=>{
     try {
+        console.log('Request Body:', req.body); // Log the body
         const {email, password} = req.body;
         const user = await userModel.findOne({email})
 

@@ -8,8 +8,16 @@ import imageRouter from './routes/imageRoutes.js';
 const PORT = process.env.PORT || 4000;
 const app = express();
 
+app.use(express.json())
+
+app.use((req, res, next) => {
+    console.log(`Incoming request: ${req.method} ${req.url}`);
+    console.log('Request body:', req.body);
+    next();
+  });
+
 // Define allowed origins (your Vercel frontend URL and localhost for local development)
-const allowedOrigins = ['https://imagify-frontend-nu.vercel.app', 'http://localhost:4000']; // Add other domains if needed
+const allowedOrigins = ['https://imagify-frontend-nu.vercel.app', 'https://imagify-server-cyan.vercel.app/']; // Add other domains if needed
 
 // CORS configuration
 const corsOptions = {
